@@ -1,0 +1,9 @@
+export const SET_USERS = 'SET_USERS';
+export const GET_USERS = 'GET_USERS';
+export const LOAD_USERS = 'LOAD_USERS';
+export const SET_ACTIVE_USER = 'SET_ACTIVE_USER';
+export const LOAD_ALL_POSTS = 'LOAD_ALL_POSTS';
+export const SET_POSTS = 'SET_POSTS';
+export const LOADING_USERS = 'LOADING_USERS';
+export const LOADING_POSTS = 'LOADING_POSTS';
+export const CREATE_NEW_POST = 'CREATE_NEW_POST';
