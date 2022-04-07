@@ -1,13 +1,13 @@
 import {
-    CREATE_NEW_POST,
-    LOADING_POSTS,
-    LOADING_USERS,
-    LOAD_ALL_POSTS,
-    LOAD_USERS,
-    SET_ACTIVE_USER,
-    SET_POSTS,
-    SET_USERS,
-} from "./types";
+  CREATE_NEW_POST,
+  LOADING_POSTS,
+  LOADING_USERS,
+  LOAD_ALL_POSTS,
+  LOAD_USERS,
+  SET_ACTIVE_USER,
+  SET_POSTS,
+  SET_USERS
+} from './types';
 
 export const loadUsers = () => ({ type: LOAD_USERS });
 export const setUsers = (payload: User[]) => ({ type: SET_USERS, payload });

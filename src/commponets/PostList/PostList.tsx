@@ -5,8 +5,13 @@ import { getActiveUserId, getAllPosts, isPostsLoading } from '../../store/select
 import { Loader } from '../Loader';
 
 let selectUserId = '0';
+let selectPage = 1;
 
-export const getUserId = () => (selectUserId);
+export const resetSelectPage = () => {
+  selectPage = 1;
+};
+export const getUserId = () => selectUserId;
+export const getSelectedPage = () => selectPage;
 
 export const PostList: React.FC = () => {
   const dispatch = useDispatch();
@@ -14,32 +19,33 @@ export const PostList: React.FC = () => {
   const posts = useSelector(getAllPosts);
   const isLoad = useSelector(isPostsLoading);
 
-
   useEffect(() => {
     dispatch(loadingPosts());
-
     dispatch(loadPosts());
   }, [selectUserId]);
 
-  if (isLoad) {
-    return <Loader />
-  }
+  const handlerNextPage = () => {
+    selectPage++;
+    dispatch(loadingPosts());
+    dispatch(loadPosts());
+    console.log(selectPage);
+  };
 
-  return ( 
-    <ul className="postList">
-      {
-        posts.map(post => (
-          <li key={post.id}  className="box">
-            <h2 className="title">
-              {post.title}
-            </h2>
-            <div>
-              {post.body}
-            </div>
+  return (
+    <>
+      <ul className="postList m-4">
+        {posts.map((post) => (
+          <li key={post.id} className="box">
+            <h2 className="title">{post.title}</h2>
+            <p>ID {post.id}</p>
+            <div>{post.body}</div>
           </li>
-        ))
-      }
-    </ul>
+        ))}
+      </ul>
+      <div className="is-flex is-justify-content-center">{isLoad && <Loader />}</div>
+      <button className="button" onClick={handlerNextPage}>
+        Load more
+      </button>
+    </>
   );
-}
-
+};

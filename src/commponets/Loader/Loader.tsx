@@ -6,5 +6,4 @@ export const Loader: React.FC = () => {
       <div className="loader is-loading"></div>
     </div>
   );
-}
-
+};

@@ -1,4 +1,4 @@
-import { RootState } from "./rootReducer";
+import { RootState } from './rootReducer';
 
 export const getUsers = (state: RootState) => state.users;
 export const getActiveUserId = (state: RootState) => state.activeUserId;

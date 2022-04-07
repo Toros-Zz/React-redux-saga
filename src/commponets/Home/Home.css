@@ -1,0 +1,21 @@
+.Header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  border-bottom: 1px solid rgb(37, 18, 18);
+  background-color: rgba(83, 83, 83, 0.459);
+}
+
+.is-active::after {
+  content: "";
+
+  width: 100%;
+  height: 5px;
+
+  background-color: grey;
+
+  position: absolute;
+
+  top: 120%;
+}

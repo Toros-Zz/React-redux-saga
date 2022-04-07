@@ -1,10 +1,10 @@
-import { all, takeLatest } from 'redux-saga/effects'
+import { all, takeLatest } from 'redux-saga/effects';
 import { CREATE_NEW_POST, LOAD_ALL_POSTS, LOAD_USERS } from '../types';
 import { getPosts, pushPost } from './sagasPost';
 import { getUser } from './sagasUsers';
 
 function* watchLoadUsers() {
-  yield takeLatest(LOAD_USERS, getUser)
+  yield takeLatest(LOAD_USERS, getUser);
 }
 
 function* watchLoadPosts() {
@@ -16,9 +16,5 @@ function* watchPushNewPost() {
 }
 
 export default function* rootSaga() {
-  yield all([
-    watchLoadUsers(),
-    watchLoadPosts(),
-    watchPushNewPost(),
-  ])
+  yield all([watchLoadUsers(), watchLoadPosts(), watchPushNewPost()]);
 }

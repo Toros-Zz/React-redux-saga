@@ -14,8 +14,8 @@ export const Form: React.FC = () => {
   const [post, setPost] = useState<Post>({
     title: '',
     body: '',
-    userId: 0,
-  })
+    userId: 0
+  });
   const users = useSelector(getUsers);
 
   const isValidPost = () => {
@@ -24,13 +24,13 @@ export const Form: React.FC = () => {
 
       return false;
     }
-    
+
     if (!post.body.trim()) {
       console.log('Type correct body');
 
       return false;
     }
-    
+
     if (post.userId === 0) {
       console.log('Please select user');
 
@@ -39,11 +39,11 @@ export const Form: React.FC = () => {
 
     return true;
   };
-  
-  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    const {name, value} = event.currentTarget;
 
-    setPost({...post, [name]: value});
+  const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const { name, value } = event.currentTarget;
+
+    setPost({ ...post, [name]: value });
   };
 
   const submitHandler = (event: React.FormEvent<HTMLFormElement>) => {
@@ -57,49 +57,35 @@ export const Form: React.FC = () => {
   };
 
   return (
-    <form onSubmit={submitHandler} className="box">
+    <form onSubmit={submitHandler} className="box m-4">
       <input
         placeholder="Title"
         type="text"
-        name='title'
-        className='input'
+        name="title"
+        className="input"
         value={post.title}
         onChange={onChangeHandler}
       />
       <input
         placeholder="Body"
         type="text"
-        name='body'
-        className='input'
+        name="body"
+        className="input"
         value={post.body}
         onChange={onChangeHandler}
       />
-      <select
-        name="userId"
-        className="select"
-        onChange={onChangeHandler}
-        value={post.userId}
-      >
+      <select name="userId" className="select" onChange={onChangeHandler} value={post.userId}>
         <option value="0">Select user</option>
 
-        {
-          users.map(user => (
-            <option 
-              key={user.id}
-              value={user.id}
-            >
-              {user.name}
-            </option>
-          ))
-        }
+        {users.map((user) => (
+          <option key={user.id} value={user.id}>
+            {user.name}
+          </option>
+        ))}
       </select>
-      <button 
-        className='button'
-        type="submit"
-      >
+      <button className="button" type="submit">
         Create new post
       </button>
     </form>
   );
-}
-
+};

@@ -15,9 +15,9 @@ export async function addData<T>(addTo: string, data: T) {
     const response = await fetch(`${BASE_URL}${addTo}`, {
       method: 'POST',
       headers: {
-        'Content-type': 'application/json; charset=utf-8',
+        'Content-type': 'application/json; charset=utf-8'
       },
-      body: JSON.stringify({ ...data }),
+      body: JSON.stringify({ ...data })
     });
 
     return response.json();
